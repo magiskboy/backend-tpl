@@ -1,0 +1,21 @@
+# Ignore everything
+
+.git
+venv
+LICENSE
+Procfile
+Makefile
+coverage.xml
+.coverage
+.codecov.yml
+.circleci
+htmlcov
+docs
+Dockerfile
+docker-compose.yml
+docker-compose.yml.example
+tests
+requirements-dev.txt
+pylintplugins.py
+pytest.ini
+linter.py

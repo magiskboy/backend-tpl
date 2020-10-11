@@ -1,0 +1,13 @@
+{
+  "pkg_name": "fastapi_boilerplate",
+  "repo_name": "fastapi-boilerplate",
+  "repo_user": "magiskboy",
+  "version": "0.0.1",
+  "author": "Magisk",
+  "author_email": "nguyenkhacthanh244@gmail.com",
+  "description": "FastAPI boilerplate",
+  "docker_repo_url": "nguyenkhacthanh/fastapi-boilerplate",
+  "_copy_without_render": [
+    ".github/workflows/test.yaml"
+  ]
+}
