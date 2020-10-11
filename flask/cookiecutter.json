@@ -1,0 +1,13 @@
+{
+  "pkg_name": "flask_boilerplate",
+  "repo_name": "flask-boilerplate",
+  "repo_user": "magiskboy",
+  "version": "0.0.1",
+  "author": "Magisk",
+  "author_email": "nguyenkhacthanh244@gmail.com",
+  "description": "Flask boilerplate for Restful API",
+  "docker_repo_url": "nguyenkhacthanh/flask-boilerplate",
+  "_copy_without_render": [
+    ".github/workflows/test.yaml"
+  ]
+}
