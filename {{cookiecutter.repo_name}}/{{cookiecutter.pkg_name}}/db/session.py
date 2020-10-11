@@ -5,7 +5,7 @@ from sqlalchemy.orm import (                #type:ignore
     scoped_session,
     sessionmaker,
 )
-from app import core
+from {{cookiecutter.pkg_name}} import core
 
 
 engine = create_engine(core.setting.SQLALCHEMY_DATABASE_URI, pool_pre_ping=True)

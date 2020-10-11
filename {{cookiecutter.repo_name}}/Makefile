@@ -12,8 +12,8 @@ test: deps
 	python -m pytest
 
 lint: deps
-	PYTHONPATH=. python linter.py --fail-under 9.5 app
-	PYTHONPATH=. mypy app
+	PYTHONPATH=. python linter.py --fail-under 9.5 {{cookiecutter.pkg_name}}
+	PYTHONPATH=. mypy {{cookiecutter.pkg_name}}
 
 docker-build: Dockerfile .dockerignore
 	docker build . -t {{cookiecutter.docker_repo_url}}:m-$(TAG)
