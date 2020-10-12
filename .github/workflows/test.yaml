@@ -3,7 +3,7 @@ name: Test
 on: [push]
 
 jobs:
-  test-fastapi:
+  fastapi:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -14,20 +14,9 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Cache pip
-      uses: actions/cache@v2
-      with:
-        # This path is specific to Ubuntu
-        path: ~/.cache/pip
-        # Look to see if there is a cache hit for the corresponding requirements file
-        key: ${{ runner.os }}-pip-${{ hashFiles('target/fastapi-boilerplate/requirements-dev.txt') }}-${{ hashFiles('target/fastapi-boilerplate/requirements.txt') }}
-        restore-keys: |
-          ${{ runner.os }}-pip-
-          ${{ runner.os }}-
     - name: Install cookiecutter
       run: |
         pip install cookiecutter
     - name: Test generate
       run: |
-        cd fastapi
-        cookiecutter --no-input .
+        cookiecutter --no-input fastapi -o target
