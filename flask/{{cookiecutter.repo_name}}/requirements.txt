@@ -1,0 +1,7 @@
+flasgger
+Flask-CORS
+Flask-Migrate
+gunicorn
+gevent
+Flask-SQLAlchemy
+sentry-sdk

@@ -13,7 +13,7 @@ $ cookiecutter gh:magiskboy/pyweb-template --directory="framework name"
 
 We support some frameworks such as:
 
-* [Flask](https://flask.palletsprojects.com) planned
+* [Flask](https://flask.palletsprojects.com)
 
 * [FastAPI](http://fastapi.tiangolo.com/)
 
