@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ../hooks/post_gen_project.sh
+. ../hooks/post_gen_project.sh
 
 git_init
 
