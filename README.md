@@ -1,5 +1,7 @@
 ## Boilerplate for web application
 
+[![GithubCI](https://github.com/magiskboy/restapi-py/workflows/Test/badge.svg)](https://github.com/magiskboy/restapi-py/actions?query=workflow%3ACI)
+
 
 ### How to use?
 

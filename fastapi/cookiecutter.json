@@ -2,6 +2,7 @@
   "pkg_name": "fastapi_boilerplate",
   "repo_name": "fastapi-boilerplate",
   "repo_user": "magiskboy",
+  "git_provider": "github.com",
   "version": "0.0.1",
   "author": "Magisk",
   "author_email": "nguyenkhacthanh244@gmail.com",
