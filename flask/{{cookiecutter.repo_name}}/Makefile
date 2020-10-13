@@ -15,8 +15,11 @@ lint: deps
 	PYTHONPATH=. python linter.py --fail-under 9.5 flask_boilerplate
 	PYTHONPATH=. mypy flask_boilerplate
 
-docker-build: Dockerfile .dockerignore
-	docker build . -t {{cookiecutter.docker_repo_url}}:m-$(TAG)
+docker-build: {{cookiecutter.pkg_name}} Dockerfile .dockerignore
+	docker build . -t {{cookiecutter.registry_repo}}:m-$(TAG)
+
+docker-push:
+	docker push {{cookiecutter.registry_host}}/{{cookiecutter.registry_repo}}:m-$(TAG)
 
 clean:
 	@rm -rf \
