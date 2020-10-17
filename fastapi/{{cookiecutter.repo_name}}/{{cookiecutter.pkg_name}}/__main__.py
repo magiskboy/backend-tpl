@@ -1,5 +1,6 @@
 # coding=utf-8
 
+import os
 import click
 import uvicorn      #type:ignore
 import sentry_sdk
@@ -25,8 +26,9 @@ def run_server(host='0.0.0.0', port=8000, workers=None,     #pylint:disable=R091
             integrations=[SqlalchemyIntegration()]
         )
         app = SentryAsgiMiddleware(app).app
-
-    uvicorn.run('app.__main__:app', host=host, port=port, reload=reload, \
+    if not workers:
+        workers = os.cpu_count()
+    uvicorn.run('{{cookiecutter.pkg_name}}.__main__:app', host=host, port=port, reload=reload, \
                 workers=workers, log_level=log_level, loop=loop)
 
 

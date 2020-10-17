@@ -10,6 +10,7 @@ RUN apk update --no-cache && \
 ADD ./requirements.txt .
 
 RUN python -mvenv venv && \
+    venv/bin/pip install cython && \
     venv/bin/pip install -r requirements.txt
 
 FROM python:3.8-alpine3.12
@@ -22,6 +23,6 @@ ADD . .
 
 EXPOSE 8000
 
-ENTRYPOINT PYTHONPATH=. venv/bin/python app prod
+ENTRYPOINT PYTHONPATH=. venv/bin/python {{cookiecutter.pkg_name}} prod
 
 CMD /bin/sh
