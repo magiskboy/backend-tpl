@@ -1,4 +1,5 @@
 TAG = $(shell cat .git/refs/heads/master | cut -c1-8)
+PORT = 8000
 
 all: dev
 
@@ -16,7 +17,10 @@ lint: deps
 	PYTHONPATH=. mypy {{cookiecutter.pkg_name}}
 
 docker-build: Dockerfile .dockerignore
-	docker build . -t {{cookiecutter.docker_repo_url}}:m-$(TAG)
+	docker build . --build-arg PORT=$(PORT) -t {{cookiecutter.docker_repo_url}}:m-$(TAG)
+
+docker-run:
+	docker run -it --rm -p$(PORT):$(PORT) {{cookiecutter.docker_repo_url}}:m-$(TAG)
 
 clean:
 	@rm -rf \

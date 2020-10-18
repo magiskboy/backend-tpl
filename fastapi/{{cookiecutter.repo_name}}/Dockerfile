@@ -15,14 +15,23 @@ RUN python -mvenv venv && \
 
 FROM python:3.8-alpine3.12
 
+ARG PORT=8000
+
+ENV PORT=$PORT
+
 WORKDIR /app
 
 COPY --from=compile-image /app/venv ./venv
 
 ADD . .
 
-EXPOSE 8000
+EXPOSE $PORT
 
-ENTRYPOINT PYTHONPATH=. venv/bin/python {{cookiecutter.pkg_name}} prod
+ENTRYPOINT PYTHONPATH=. venv/bin/gunicorn \
+    {{cookiecutter.pkg_name}}.__main__:app \
+    --worker-class uvicorn.workers.UvicornWorker \
+    --workers $(( $(nproc) * 2 + 1 )) \
+    --bind "0.0.0.0:$PORT" \
+    --log-level error
 
 CMD /bin/sh
