@@ -1,8 +1,9 @@
 #!/bin/bash
 
 git_init() {
+    local GIT_URL=$1
     git init
-    git remote set-url origin https://{{cookiecutter.git_provider}}/{{cookiecutter.repo_user}}/{{cookiecutter.repo_name}}
+    git remote add origin $GIT_URL
     git add .
     git commit -m "Initial"
 }

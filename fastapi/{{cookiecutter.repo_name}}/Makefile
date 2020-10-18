@@ -22,6 +22,9 @@ docker-build: Dockerfile .dockerignore
 docker-run:
 	docker run -it --rm -p$(PORT):$(PORT) {{cookiecutter.docker_repo_url}}:m-$(TAG)
 
+docker-push:
+	docker push {{cookiecutter.registry_host}}/{{cookiecutter.registry_repo}}:m-$(TAG)
+
 clean:
 	@rm -rf \
 		coverage.xml \
