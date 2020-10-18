@@ -17,10 +17,10 @@ lint: deps
 	PYTHONPATH=. mypy {{cookiecutter.pkg_name}}
 
 docker-build: Dockerfile .dockerignore
-	docker build . --build-arg PORT=$(PORT) -t {{cookiecutter.docker_repo_url}}:m-$(TAG)
+	docker build . --build-arg PORT=$(PORT) -t {{cookiecutter.registry_repo}}:m-$(TAG)
 
 docker-run:
-	docker run -it --rm -p$(PORT):$(PORT) {{cookiecutter.docker_repo_url}}:m-$(TAG)
+	docker run -it --rm -p$(PORT):$(PORT) {{cookiecutter.registry_repo}}:m-$(TAG)
 
 docker-push:
 	docker push {{cookiecutter.registry_host}}/{{cookiecutter.registry_repo}}:m-$(TAG)
