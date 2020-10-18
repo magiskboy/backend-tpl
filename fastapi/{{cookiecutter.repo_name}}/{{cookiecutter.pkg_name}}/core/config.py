@@ -13,7 +13,7 @@ from pydantic import (
 
 
 class Setting(BaseSettings):
-    SERVICE_NAME: str = 'FastAPI service'
+    SERVICE_NAME: str = '{{cookiecutter.repo_name}}'
 
     DEBUG: bool = False
 
