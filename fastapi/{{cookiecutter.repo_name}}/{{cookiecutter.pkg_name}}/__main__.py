@@ -22,8 +22,6 @@ def dev():
     """
     global app      #pylint:disable=W0603,C0103
 
-    if not workers:
-        workers = os.cpu_count()
     uvicorn.run('{{cookiecutter.pkg_name}}.__main__:app',
                 host='127.0.0.1',
                 port=8000,
