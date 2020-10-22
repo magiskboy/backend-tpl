@@ -1,6 +1,5 @@
 # coding=utf-8
 
-import os
 import click
 import uvicorn      #type:ignore
 from {{cookiecutter.pkg_name}} import api

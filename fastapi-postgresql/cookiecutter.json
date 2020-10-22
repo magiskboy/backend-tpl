@@ -1,0 +1,15 @@
+{
+  "pkg_name": "app",
+  "repo_name": "fastapi_app",
+  "repo_user": "magiskboy",
+  "git_provider": ["github.com", "gitlab.com", "bitbucket.org"],
+  "version": "0.0.1",
+  "author": "Magisk",
+  "author_email": "nguyenkhacthanh244@gmail.com",
+  "description": "FastAPI Application",
+  "registry_host": "docker.io",
+  "registry_repo": "nguyenkhacthanh/fastapi-boilerplate",
+  "_copy_without_render": [
+    ".github/workflows/test.yaml"
+  ]
+}
