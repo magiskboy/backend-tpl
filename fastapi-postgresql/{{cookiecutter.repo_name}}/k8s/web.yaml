@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: {{cookiecutter.pkg_name}}
+spec:
+  selector:
+    app: web
+  ports:
+  - port: 8000
+    targetPort: 8000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{cookiecutter.pkg_name}}
+  name: web
+  labels:
+    app: web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web
+  template:
+    metadata:
+      labels:
+        app: web
+    spec:
+      containers:
+      - name: web
+        image: {{cookiecutter.registry_repo}}:m-[tag]
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "200m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DATABASE_DSN
+          valueFrom:
+            configMapKeyRef:
+              name: database
+              key: dsn
+        - name: CELERY_BROKER_URL
+          valueFrom:
+            configMapKeyRef:
+              name: celery
+              key: broker_url

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: {{cookiecutter.pkg_name}}
+  name: celery
+  labels:
+    app: celery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: celery
+  template:
+    metadata:
+      labels:
+        app: celery
+    spec:
+      containers:
+      - name: celery
+        image: {{cookiecutter.registry_repo}}:m-[tag]
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "300m"
+          limits:
+            memory: "512Mi"
+            cpu: "600m"
+        command: ["venv/bin/celery"]
+        args: ["-A", "{{cookiecutter.pkg_name}}.core.celery:app", "worker", "--loglevel", "error"]
+        env:
+        - name: CELERY_BROKER_URL
+          valueFrom:
+            configMapKeyRef:
+              name: celery
+              key: broker_url
+        - name: DATABASE_DSN
+          valueFrom:
+            configMapKeyRef:
+              name: database
+              key: dsn

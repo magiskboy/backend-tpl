@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+uvloop
+gunicorn
+asyncpg
+sentry-sdk
+Click
+celery[msgpack]==5.0.1
+ujson

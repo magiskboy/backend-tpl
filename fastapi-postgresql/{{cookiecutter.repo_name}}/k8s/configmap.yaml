@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: celery
+  namespace: {{cookiecutter.pkg_name}}
+data:
+  broker_url: "amqp://celery:password@rabbitmq:5672/celery"
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: database
+  namespace: {{cookiecutter.pkg_name}}
+data:
+  dsn: "postgresql://app:password@postgres:5432/app"
