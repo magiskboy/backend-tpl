@@ -1,7 +1,8 @@
 flasgger
 Flask-CORS
 Flask-Migrate
-gunicorn
-gevent
+uvicorn[standard]
+uvloop
+httptools
 Flask-SQLAlchemy
 sentry-sdk
