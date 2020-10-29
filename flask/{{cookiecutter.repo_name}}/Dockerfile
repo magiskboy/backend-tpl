@@ -22,6 +22,12 @@ ADD . .
 
 EXPOSE 8000
 
-ENTRYPOINT PYTHONPATH=. venv/bin/gunicorn -c gunicorn.conf.py {{cookiecutter.pkg_name}}.wsgi:app
+ENTRYPOINT PYTHONPATH=. venv/bin/uvicorn \
+    --host 0.0.0.0 \
+    --loop uvloop \
+    --workers $(nproc) \
+    --interface wsgi \
+    --log-level error \
+    {{cookiecutter.pkg_name}}.wsgi:app
 
 CMD /bin/sh
