@@ -8,7 +8,7 @@ db_pool: Pool = None
 
 
 class PostgresConfig(BaseSettings):
-    dsn: Optional[str] = 'postgres://postgres:password@localhost:5432/app'
+    dsn: Optional[str] = 'postgres://postgres:password@localhost:5432/{{pkg_name}}'
 
     min_size: Optional[int] = 10
 

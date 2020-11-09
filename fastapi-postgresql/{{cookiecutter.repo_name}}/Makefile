@@ -14,7 +14,7 @@ deps: requirements.txt requirements-dev.txt
 	@pip install -r requirements-dev.txt > /dev/null
 
 web: deps
-	PYTHONPATH=. python app dev
+	PYTHONPATH=. python {{pkg_name}} dev
 
 job: deps
 	PYTHONPATH=. celery -A app.core.celery:app worker \
