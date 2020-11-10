@@ -14,17 +14,17 @@ deps: requirements.txt requirements-dev.txt
 	@pip install -r requirements-dev.txt > /dev/null
 
 web: deps
-	PYTHONPATH=. python {{pkg_name}} dev
+	PYTHONPATH=. python {{cookiecutter.pkg_name}} dev
 
 job: deps
-	PYTHONPATH=. celery -A app.core.celery:app worker \
+	PYTHONPATH=. celery -A {{cookiecutter.pkg_name}}.core.celery:app worker \
 		--loglevel=error
 
 test: deps
 	PYTHONPATH=. pytest
 
 lint: deps
-	PYTHONPATH=. python linter.py --fail-under 9.5 app
+	PYTHONPATH=. python linter.py --fail-under 9.5 {{cookiecutter.pkg_name}}
 	PYTHONPATH=. mypy {{cookiecutter.pkg_name}}
 
 docker-build: Dockerfile .dockerignore
